@@ -1,0 +1,22 @@
+{
+    "name": "italystrap/breadcrumbs",
+    "description": "ItalyStrap Breadcrumbs Class",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "overclokk",
+            "email": "info@overclokk.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ItalyStrap\\Breadcrumbs\\": "src/Breadcrumbs/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.3 || ^5.4 || ^5.5 || ^5.6 || ^7.0",
+        "italystrap/config": "0.0.1-alpha"
+    }
+}
