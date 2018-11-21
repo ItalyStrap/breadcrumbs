@@ -10,6 +10,8 @@
 namespace ItalyStrap\Breadcrumbs;
 
 use ItalyStrap\Config\Config_Interface;
+use ItalyStrap\Config\Config;
+use InvalidArgumentException;
 
 /**
  *
@@ -17,64 +19,56 @@ use ItalyStrap\Config\Config_Interface;
 class Breadcrumbs_Factory {
 
 	/**
-	 * Constructor
+	 * Makers
 	 *
-	 * @param  string $value [description]
-	 * @return string        [description]
+	 * @param  array  $args
+	 * @param  string $type
+	 *
+	 * @return ItalyStrap\Breadcrumbs\View
 	 */
-	public static function make() {
+	public static function make( array $args = [], $type ) {
+
+		static $container = null;
+
+		$config_default = require( 'config/breadcrumbs.php' );
 
 		/**
-		 * Get the first element of breadcrumbs
+		 * Breadcrumbs configuration
+		 *
+		 * @var Config
 		 */
-		if ( ( is_home() && is_front_page() ) || is_front_page() ) {
+		$config = new Config( $args, $config_default );
 
-		} else if ( is_home() && ! is_front_page() ) {
+		if ( is_null( $container ) ) {
 
-		} else {
+			/**
+			 * Breadcrumbs items container
+			 * First instantiate the container
+			 *
+			 * @var Container
+			 */
+			$container = new Container();
 
+			/**
+			 * Breadcrumbs generator
+			 * Pass the container to the generator
+			 *
+			 * @var Generator
+			 */
+			$generator = new Generator( $config, $container );
+			// Build the items list
+			$generator->build();
 		}
 
 		/**
-		 * Get the rest of breadcrumbs for every content type
+		 * And then pass the container with all items to the viewer
 		 */
-		if ( is_attachment() ) {
-
-		} elseif ( is_single() && ! is_attachment() ) {
-
-			$breadcrumb = new Controllers\Single();
-
-		} elseif ( is_page() && ( ! is_front_page() ) ) {
-
-		} elseif ( is_tax() ) {
-
-		} elseif ( is_category() ) {
-
-		} elseif ( is_tag() ) {
-
-		} elseif ( is_post_type_archive() ) {
-
-		} elseif ( is_year() ) {
-
-		} elseif ( is_month() ) {
-
-		} elseif ( is_day() ) {
-
-		} elseif ( is_author() ) {
-
-		} elseif ( is_search() ) {
-
-		} elseif ( is_404() ) {
-
+		if ( 'json' === $type ) {
+			return new Json( $config, $container );	
+		} elseif ( 'html' === $type ) {
+			return new Html( $config, $container );
 		}
 
-		/**
-		 * If is paginated page add (Page n°) at the end of breadcrumb
-		 * This has <small> tag
-		 */
-		if ( get_query_var( 'paged' ) ) {
-		}
-
-		return apply_filters( 'italystrap_breadcrumbs', $this->breadcrumbs );
+		throw new InvalidArgumentException( 'Unknown $type format given' );
 	}
 }
