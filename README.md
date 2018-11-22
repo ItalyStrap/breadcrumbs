@@ -1,5 +1,8 @@
 # ItalyStrap Breadcrumbs
 
+[![License](https://poser.pugx.org/italystrap/breadcrumbs/license)](https://packagist.org/packages/italystrap/breadcrumbs)
+[![Latest Stable Version](https://poser.pugx.org/italystrap/breadcrumbs/v/stable)](https://packagist.org/packages/italystrap/breadcrumbs)
+
 Breadcrumbs Class API for WordPress
 
 This package create an HTML or Json Breadcrumbs elements to display on your WordPress site
