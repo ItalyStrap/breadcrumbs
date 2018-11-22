@@ -21,10 +21,12 @@ class Container extends Config implements Container_Interface {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @filter  ItalyStrap\Breadcrumbs\Container\Items
+	 *
 	 * @return array
 	 */
 	public function all() {
-		return apply_filters( 'italystrap_breadcrumbs_items_list', $this->items );
+		return apply_filters( get_class( $this ) . '\Items', $this->items );
 	}
 
 	/**

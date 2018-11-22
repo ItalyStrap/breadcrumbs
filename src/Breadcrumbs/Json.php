@@ -28,8 +28,6 @@ class Json extends View {
 	 */
 	protected function set_output() {
 
-		$output = '';
-
 		$this->schema = [
 			'@context'			=> 'https://schema.org',
 			'@type'				=> 'BreadcrumbList',

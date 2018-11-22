@@ -19,7 +19,6 @@ class Generator implements Generator_Interface {
 
 	private $config = null;
 	private $container = null;
-	private $list = null;
 
 	/**
 	 * Constructor
