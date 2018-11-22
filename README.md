@@ -6,7 +6,7 @@ This package create an HTML or Json Breadcrumbs elements to display on your Word
 
 ## Installation
 
-#### Install with Composer
+### Install with Composer
 
 Add the package to your projects `composer.json` file. Visit [getcomposer.org](http://getcomposer.org/) more information.
 
@@ -18,7 +18,7 @@ Add the package to your projects `composer.json` file. Visit [getcomposer.org](h
 }
 ```
 
-#### Install Manually
+### Install Manually
 
 Download and include the class file into your theme/plugin:
 
@@ -28,7 +28,7 @@ include_once 'path/to/ItalyStrap/Breadcrumbs.php';
 
 ## Usage
 
-#### Basic usage
+### Basic usage
 
 Use `\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, $type )` to display the breadcrumbs in your template.
 
@@ -112,7 +112,7 @@ return [
 ];
 ```
 
-##### Default output
+### Default output
 
 ```html
 <nav aria-label="breadcrumb">
@@ -135,7 +135,7 @@ return [
 
 ## Advanced usage
 
-##### Example for HTML version
+### Example for HTML version
 
 ```php
 /**
@@ -192,7 +192,7 @@ function do_breadcrumbs( array $args = array() ) {
 add_action( 'do_breadcrumbs', __NAMESPACE__ . '\do_breadcrumbs' );
 ```
 
-##### Example for Json version
+### Example for Json version
 
 ```php
 /**
@@ -248,19 +248,19 @@ function do_breadcrumbs( array $args = array() ) {
 add_action( 'wp_footer', __NAMESPACE__ . '\do_breadcrumbs' );
 ```
 
-#### Filters
+## Filters
 
 > TODO
 
-##### Other Example
+## Other Example
 
 > TODO
 
-#### array_insert()
+## array_insert()
 
 `array_insert()` is a function that allows you to insert a new element into an array at a specific index.
 
-##### Example
+### Example array_insert()
 
 ```php
 /**
@@ -293,8 +293,8 @@ add_filter( 'ItalyStrap\Breadcrumbs\Container\Items', 'modify_breadcrumbs_list' 
 
 ## Notes
 
-* Licensed under the [GNU General Public License v2.0](https://github.com/ItalyStrap/breadcrumbs/blob/master/LICENSE)
-* Maintained under the [Semantic Versioning Guide](http://semver.org)
+*  Licensed under the [GNU General Public License v2.0](https://github.com/ItalyStrap/breadcrumbs/blob/master/LICENSE)
+*  Maintained under the [Semantic Versioning Guide](http://semver.org)
 
 ## Author
 

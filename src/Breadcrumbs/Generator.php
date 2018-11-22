@@ -13,11 +13,22 @@ use ItalyStrap\Config\Config_Interface;
 use Exception;
 
 /**
- *
+ * Generator
  */
 class Generator implements Generator_Interface {
 
+	/**
+	 * Config object
+	 *
+	 * @var Config
+	 */
 	private $config = null;
+
+	/**
+	 * Container object
+	 *
+	 * @var Container
+	 */
 	private $container = null;
 
 	/**
@@ -58,7 +69,7 @@ class Generator implements Generator_Interface {
 			$this->container->push( $bloginfo_name, $home_url );
 
 		} else if ( is_home() && ! is_front_page() ) {
-		// The page with the list of article
+		// The page with the list of article.
 			$page_for_posts = get_option( 'page_for_posts' );
 
 			/**
@@ -116,7 +127,7 @@ class Generator implements Generator_Interface {
 				/**
 				 * If article has category and has parents category too
 				 */
-				if ( $category && $post_type === 'post' ) {
+				if ( $category && 'post' === $post_type ) {
 
 					$this->generate_tax_hierarchy( $this->container, $category[0] );
 				}
@@ -131,7 +142,7 @@ class Generator implements Generator_Interface {
 				// echo get_post_format_string( get_post_format() );
 				// }
 
-				if ( $post_type === 'post' ) {
+				if ( 'post' === $post_type ) {
 
 					$this->container->push( get_the_title() );
 
@@ -201,7 +212,6 @@ class Generator implements Generator_Interface {
 						$get_object_taxonomies = get_object_taxonomies( get_post() );
 
 						/**
-						 * https://developer.wordpress.org/reference/functions/get_the_terms/
 						 * Ritorna tutte le tassonomie associate al post partendo
 						 * dalla prima trovata sopra
 						 * Esempio da:
@@ -209,6 +219,7 @@ class Generator implements Generator_Interface {
 						 * EDD Category
 						 * Nuova categoria
 						 * ecc
+						 * https://developer.wordpress.org/reference/functions/get_the_terms/
 						 */
 						$get_the_terms = get_the_terms( get_the_ID(), $get_object_taxonomies[0] );
 
@@ -389,12 +400,8 @@ class Generator implements Generator_Interface {
 
 				break;
 
-			// case is_attachment():
-			// 	# code...
-			// 	break;
-
 			default:
-				# code...
+				$this->container->push( __( 'Not page found', 'italystrap' ) );
 				break;
 		}
 
@@ -428,11 +435,11 @@ class Generator implements Generator_Interface {
 	 * @see generate_tax_hierarchy
 	 * @link https://core.trac.wordpress.org/browser/tags/4.1/src/wp-includes/category-template.php#L42 Original function
 	 *
-	 * @param  Container_Interface $container [description]
+	 * @param  Container_Interface $container
 	 * @param  int|object          $id        Category ID.
-	 * @param  array               $visited    Optional. Already linked to categories to
-	 *                                         prevent duplicates
-	 * @param  string              $tax       [description]
+	 * @param  array               $visited   Optional. Already linked to categories to
+	 *                                        prevent duplicates
+	 * @param  string              $tax
 	 *
 	 * @return string|WP_Error A list of category parents on success, WP_Error on failure.
 	 */
