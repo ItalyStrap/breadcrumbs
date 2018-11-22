@@ -1,13 +1,8 @@
 <?php
-
 /**
- * Config Class that handle the classes configuration
+ * Container Interface
  *
- * [Long Description.]
- *
- * @link [URL]
- * @since 2.4.2
- * @author      hellofromTonya
+ * @since 1.0.0
  *
  * @package ItalyStrap
  */

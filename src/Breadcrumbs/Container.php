@@ -1,6 +1,6 @@
 <?php
 /**
- * Breadcrumbs_Factory Class API
+ * Container Class API
  *
  * @since 1.0.0
  *

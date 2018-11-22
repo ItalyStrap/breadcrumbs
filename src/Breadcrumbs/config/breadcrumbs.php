@@ -1,6 +1,8 @@
 <?php
 /**
  * Default configuration for Breadcrumbs
+ *
+ * @since 1.0.0
  */
 return [
 

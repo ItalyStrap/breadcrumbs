@@ -48,7 +48,7 @@ The second parameter is the type of breadcrumbs you want to display, "HTML" or "
 ## Options
 
 An optional array of arguments can be passed to modify the breadcrumb output.
-The defaults for each option @see Breadcrumbs/config/breadcrumbs.php
+The defaults for each option @see `Breadcrumbs/config/breadcrumbs.php`
 
 ```php
 /**
@@ -111,8 +111,6 @@ return [
 	'show_on_front'				=> true,
 ];
 ```
-
-##### Example
 
 ##### Default output
 
@@ -254,7 +252,7 @@ add_action( 'wp_footer', __NAMESPACE__ . '\do_breadcrumbs' );
 
 > TODO
 
-##### Example
+##### Other Example
 
 > TODO
 
@@ -275,16 +273,16 @@ add_action( 'wp_footer', __NAMESPACE__ . '\do_breadcrumbs' );
 function modify_breadcrumbs_list( array $list ) {
 
     // if on the events category archive page
-    if(is_tax('event-categories')) {
+    if( is_tax( 'event-categories' ) ) {
 
-        // create a new crumb
-        $crumb = array(
-            'title' => "Shows",
-            'url' => site_url('/shows')
-        );
+        // create a new element
+        $element = [
+            'title'	=> "Shows",
+            'url'	=> site_url( '/shows' )
+        ];
 
-        // add the new crumb at the index of 1
-        $list = array_insert($list, $crumb, 1);
+        // add the new element at the index of 1
+        $list = array_insert( $list, $element, 1 );
     }
 
     return $list;
