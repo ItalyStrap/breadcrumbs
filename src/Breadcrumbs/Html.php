@@ -74,7 +74,7 @@ class Html extends View{
 			$this->output .= sprintf(
 				'<%1$s%2$s>%3$s<meta itemprop="position" content="%4$d" /></%1$s>%5$s',
 				$this->config->get( 'item_tag', 'li' ),
-				\ItalyStrap\Core\get_attr(
+				\ItalyStrap\HTML\get_attr(
 					'breadcrumbs_item_attr',
 					$attr
 				),
@@ -92,7 +92,7 @@ class Html extends View{
 		$this->output = sprintf(
 			'<%1$s%2$s>%3$s</%1$s>',
 			$this->config->get( 'list_tag', 'ol' ),
-			\ItalyStrap\Core\get_attr(
+			\ItalyStrap\HTML\get_attr(
 				'breadcrumbs_list_attr',
 				$this->config->get( 'list_attr', [] )
 			),
@@ -107,7 +107,7 @@ class Html extends View{
 		$this->output = sprintf(
 			'<%1$s%2$s>%3$s</%1$s>',
 			$this->config->get( 'container_tag', 'nav' ),
-			\ItalyStrap\Core\get_attr(
+			\ItalyStrap\HTML\get_attr(
 				'breadcrumbs_container_attr',
 				$this->config->get( 'container_attr', [] )
 			),
