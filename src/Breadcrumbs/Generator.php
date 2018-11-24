@@ -401,7 +401,7 @@ class Generator implements Generator_Interface {
 				break;
 
 			default:
-				$this->container->push( __( 'Not page found', 'italystrap' ) );
+				// Do nothing
 				break;
 		}
 
