@@ -129,7 +129,7 @@ class Generator implements Generator_Interface {
 				 */
 				if ( $category && 'post' === $post_type ) {
 
-					$this->generate_tax_hierarchy( $this->container, $category[0] );
+					$this->generate_tax_hierarchy( $category[0] );
 				}
 
 				/**
@@ -209,7 +209,7 @@ class Generator implements Generator_Interface {
 						 *
 						 * @var array
 						 */
-						$get_object_taxonomies = get_object_taxonomies( get_post() );
+						$object_taxonomies = get_object_taxonomies( get_post() );
 
 						/**
 						 * Ritorna tutte le tassonomie associate al post partendo
@@ -221,7 +221,7 @@ class Generator implements Generator_Interface {
 						 * ecc
 						 * https://developer.wordpress.org/reference/functions/get_the_terms/
 						 */
-						$get_the_terms = get_the_terms( get_the_ID(), $get_object_taxonomies[0] );
+						$get_the_terms = get_the_terms( get_the_ID(), $object_taxonomies[0] );
 
 
 						if ( $get_the_terms && ! is_wp_error( $get_the_terms ) ) {
@@ -229,7 +229,7 @@ class Generator implements Generator_Interface {
 							$sorted_terms = [];
 							$this->sort_terms_hierarchically( $get_the_terms, $sorted_terms );
 
-							$this->sorted_term_html_output( $sorted_terms, $get_object_taxonomies, $this->container );
+							$this->sorted_term_html_output( $sorted_terms, $object_taxonomies );
 						}
 					}
 
@@ -281,7 +281,7 @@ class Generator implements Generator_Interface {
 					 */
 					// $breadcrumb .= $this->get_tax_parents( $queried_object->term_id, $before_element, $after_element, array(), $queried_object->taxonomy );
 
-					$this->generate_tax_hierarchy( $this->container, $queried_object->term_id, [], $queried_object->taxonomy );
+					$this->generate_tax_hierarchy( $queried_object->term_id, [], $queried_object->taxonomy );
 				}
 
 				break;
@@ -294,7 +294,7 @@ class Generator implements Generator_Interface {
 				 * Nota per me: togliere solo link su categoria nipote
 				 * e aggiungere &before_element_active
 				 */
-				$this->generate_tax_hierarchy( $this->container, get_query_var( 'cat' ) );
+				$this->generate_tax_hierarchy( get_query_var( 'cat' ) );
 
 				break;
 
@@ -435,7 +435,6 @@ class Generator implements Generator_Interface {
 	 * @see generate_tax_hierarchy
 	 * @link https://core.trac.wordpress.org/browser/tags/4.1/src/wp-includes/category-template.php#L42 Original function
 	 *
-	 * @param  Container_Interface $container
 	 * @param  int|object          $id        Category ID.
 	 * @param  array               $visited   Optional. Already linked to categories to
 	 *                                        prevent duplicates
@@ -443,7 +442,7 @@ class Generator implements Generator_Interface {
 	 *
 	 * @return string|WP_Error A list of category parents on success, WP_Error on failure.
 	 */
-	private function generate_tax_hierarchy( Container_Interface $container, $id, $visited = [], $tax = 'category' ) {
+	private function generate_tax_hierarchy( $id, $visited = [], $tax = 'category' ) {
 
 		/**
 		 * WP_term object
@@ -461,7 +460,7 @@ class Generator implements Generator_Interface {
 			$visited[] = $parent->parent;
 
 			// http://devzone.zend.com/283/recursion-in-php-tapping-unharnessed-power/
-			$this->generate_tax_hierarchy( $container, $parent->parent, $visited, $tax );
+			$this->generate_tax_hierarchy( $parent->parent, $visited, $tax );
 		}
 
 		$this->container->push( $parent->name, get_category_link( $parent->term_id ) );
@@ -512,17 +511,16 @@ class Generator implements Generator_Interface {
 	 * Sorted term html
 	 *
 	 * @param  array               $terms
-	 * @param  array               $get_object_taxonomies
-	 * @param  Container_Interface $container
+	 * @param  array               $object_taxonomies
 	 */
-	private function sorted_term_html_output( array $terms = [], $get_object_taxonomies = null, Container_Interface $container ) {
+	private function sorted_term_html_output( array $terms = [], $object_taxonomies = null ) {
 
 		$terms = $this->get_terms_flat( $terms );
 		$terms = array_reverse( $terms );
 
 		foreach ( $terms as $term ) {
 
-			$term_link = get_term_link( $term, $get_object_taxonomies[0] );
+			$term_link = get_term_link( $term, $object_taxonomies[0] );
 
 			$this->container->push( $term->name, $term_link );
 		}

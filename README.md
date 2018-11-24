@@ -14,7 +14,6 @@ This package create an HTML or Json Breadcrumbs elements to display on your Word
 
 Add the package to your projects `composer.json` file. Visit [getcomposer.org](http://getcomposer.org/) more information.
 
-
 ```shell
 composer require illuminated/helper-functions
 ```
