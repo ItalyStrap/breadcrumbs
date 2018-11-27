@@ -3,6 +3,7 @@
 [![License](https://poser.pugx.org/italystrap/breadcrumbs/license)](https://packagist.org/packages/italystrap/breadcrumbs)
 [![Latest Stable Version](https://poser.pugx.org/italystrap/breadcrumbs/v/stable)](https://packagist.org/packages/italystrap/breadcrumbs)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/cbff6ec547ff42e8ae0ca3d0195612d1)](https://www.codacy.com/app/overclokk/breadcrumbs?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ItalyStrap/breadcrumbs&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/ItalyStrap/breadcrumbs.svg?branch=master)](https://travis-ci.org/ItalyStrap/breadcrumbs)
 
 Breadcrumbs Class API for WordPress
 
