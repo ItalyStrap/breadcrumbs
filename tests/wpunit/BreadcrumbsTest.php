@@ -124,6 +124,7 @@ class BreadcrumbsTest extends \Codeception\Test\Unit
         $sut = $this->make_instance( [], 'array' );
 
         $this->assertTrue( is_array( $sut ) );
+        $this->assertTrue( isset( $sut[0]['title'] ), 'message');
     }
 
     /**
