@@ -29,8 +29,8 @@ class BreadcrumbsCest
         $I->amOnPage( '/' );
         $I->seeElement( 'nav', ['aria-label' => 'breadcrumb'] );
         $I->seeElement( 'ol', ['itemtype' => 'https://schema.org/BreadcrumbList'] );
-        // $I->seeElement( 'a', ['itemprop' => 'item', 'href' => get_home_url( null, '/' ) ] );
-        // $I->seeElement( 'a', ['itemprop' => 'item', 'href' => 'http://moduli.test/' ] );
+
+        $I->seeElement( 'a', ['itemprop' => 'item' ] );
     }
 
     /**
