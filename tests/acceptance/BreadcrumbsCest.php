@@ -5,10 +5,10 @@ class BreadcrumbsCest
 {
     public function _before(AcceptanceTester $I)
     {
-        $I->loginAsAdmin();
-        $I->amOnPluginsPage();
-        $I->seePluginInstalled( 'breadcrumbs' );
-        $I->seePluginActivated( 'breadcrumbs' );
+        // $I->loginAsAdmin();
+        // $I->amOnPluginsPage();
+        // $I->seePluginInstalled( 'breadcrumbs' );
+        // $I->seePluginActivated( 'breadcrumbs' );
     }
 
     public function _after(AcceptanceTester $I)
