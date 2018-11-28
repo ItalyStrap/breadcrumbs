@@ -31,16 +31,25 @@ Domain Path: Domain Path
 
 require( __DIR__ . '/vendor/autoload.php' );
 
-add_action( 'loop_start', function () {
+/**
+ * Init
+ *
+ * @param  string $value [description]
+ * @return string        [description]
+ */
+function init() {
 
-        $args = [
-            'bloginfo_name' => get_option( 'blogname' ),
-            'home_url' => get_home_url( null, '/' ),
-        ];
+    $type = 'html';
+    // $type = 'json';
 
-        $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'html' );
+    $args = [
+        'bloginfo_name' => get_option( 'blogname' ),
+        'home_url'      => get_home_url( null, '/' ),
+    ];
 
-        echo $breadcrumbs;
-} );
+    $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, $type );
 
+    echo $breadcrumbs;
+}
 
+add_action( 'get_footer', 'init' );

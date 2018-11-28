@@ -14,7 +14,7 @@ use ItalyStrap\Config\Config_Interface;
 /**
  *
  */
-abstract class View {
+abstract class View implements View_Interface {
 
 	/**
 	 * container object
