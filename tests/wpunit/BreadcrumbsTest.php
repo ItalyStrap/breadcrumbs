@@ -15,6 +15,12 @@ class BreadcrumbsTest extends \Codeception\Test\Unit
             'home_url'      => get_home_url( null, '/' ),
         ];
 
+        global $wp_rewrite;
+        $wp_rewrite->init();
+
+        // $this->author_id     = $this->factory()->user->create();
+        // $postId= $this->factory->post->create();
+
     }
 
     protected function _after()
@@ -104,6 +110,34 @@ class BreadcrumbsTest extends \Codeception\Test\Unit
         $sut = ob_get_clean();
 
         $this->assertStringStartsWith( "<script type='application/ld+json'>", $sut, 'message');
+    }
+
+    /**
+     * @test
+     * it should be return_an_array_of_items
+     */
+    public function it_should_be_return_an_array_of_items()
+    {
+        /**
+         * Array
+         */
+        $sut = $this->make_instance( [], 'array' );
+
+        $this->assertTrue( is_array( $sut ) );
+    }
+
+    /**
+     * @test
+     * it should be return_an_object
+     */
+    public function it_should_be_return_an_object()
+    {
+        /**
+         * Array
+         */
+        $sut = $this->make_instance( [], 'object' );
+
+        $this->assertTrue( is_object( $sut ) );
     }
 }
 

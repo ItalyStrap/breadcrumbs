@@ -26,7 +26,7 @@ class Breadcrumbs_Factory {
 	 *
 	 * @return ItalyStrap\Breadcrumbs\View
 	 */
-	public static function make( array $args = [], $type ) {
+	public static function make( array $args = [], $type = 'html' ) {
 
 		static $container = null;
 
@@ -63,12 +63,23 @@ class Breadcrumbs_Factory {
 		/**
 		 * And then pass the container with all items to the viewer
 		 */
-		if ( 'json' === $type ) {
-			return new Json( $config, $container );	
-		} elseif ( 'html' === $type ) {
-			return new Html( $config, $container );
+		switch ( $type ) {
+			case 'html':
+				return new Html( $config, $container );
+				// break;
+			case 'json':
+				return new Json( $config, $container );	
+				// break;
+			case 'object':
+				return (object) $container;
+				// break;
+			case 'array':
+				return (array) $container->all();
+				// break;
+			
+			default:
+				throw new InvalidArgumentException( 'Unknown $type format given' );
+				break;
 		}
-
-		throw new InvalidArgumentException( 'Unknown $type format given' );
 	}
 }

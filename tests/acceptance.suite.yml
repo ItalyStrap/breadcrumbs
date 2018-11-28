@@ -10,6 +10,7 @@ modules:
     enabled:
         - WPDb
         - WPBrowser
+        - WPCLI
         - \Helper\Acceptance
     config:
         WPDb:
@@ -28,3 +29,6 @@ modules:
             adminUsername: '%ADMIN_USERNAME%'
             adminPassword: '%ADMIN_PASSWORD%'
             adminPath: '%WP_ADMIN_PATH%'
+        WPCLI:
+            path: '%WP_ROOT_FOLDER%'
+            throw: true

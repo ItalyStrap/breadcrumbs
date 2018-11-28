@@ -50,6 +50,27 @@ function init() {
     $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, $type );
 
     echo $breadcrumbs;
+
+    $json = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'json' );
+
+    /**
+     * var_dump()
+     */
+    // d( $json );
+
+    $obj = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'object' );
+
+    /**
+     * var_dump()
+     */
+    // d( $obj );
+
+    $array = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'array' );
+
+    /**
+     * var_dump()
+     */
+    // d( $array );
 }
 
 add_action( 'get_footer', 'init' );
