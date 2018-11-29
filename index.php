@@ -67,7 +67,7 @@ function init() {
     /**
      * var_dump()
      */
-    // d( $array );
+    d( $array );
 }
 
 add_action( 'get_footer', 'init' );

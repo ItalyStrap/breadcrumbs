@@ -1,32 +1,37 @@
 <?php
 
-class BreadcrumbsTest extends \Codeception\Test\Unit
+class BreadcrumbsTest extends \Codeception\TestCase\WPTestCase
 {
-
-    /**
-     * @var \WpunitTester
-     */
-    protected $tester;
     protected $args;
-    
-    protected function _before()
+    protected $site_title;
+
+
+    public function setUp()
     {
+        // before
+        parent::setUp();
+
         $this->args = [
             'bloginfo_name' => get_option( 'blogname' ),
             'home_url'      => get_home_url( null, '/' ),
         ];
 
+        $this->site_title = 'Test';
+
         // global $wp_rewrite;
         // $wp_rewrite->init();
 
         // $this->author_id     = $this->factory()->user->create();
-        // $postId= $this->factory->post->create();
-
+        // $postId = $this->factory()->post->create();
+        // $postId= $this->factory()->post->create_and_get();
     }
 
-    protected function _after()
+    public function tearDown()
     {
-        // codecept_debug( $this->tester );
+        // your tear down methods here
+
+        // then
+        parent::tearDown();
     }
 
     private function make_instance( $type = 'html', $args = [] ) {
@@ -112,6 +117,9 @@ class BreadcrumbsTest extends \Codeception\Test\Unit
         $sut = ob_get_clean();
 
         $this->assertStringStartsWith( "<script type='application/ld+json'>", $sut, 'message');
+
+        //
+        // assertOutputRegex($pattern) // PHPUnit docs
     }
 
     /**
@@ -120,6 +128,8 @@ class BreadcrumbsTest extends \Codeception\Test\Unit
      */
     public function it_should_be_return_an_array_of_items()
     {
+
+        $this->go_to( home_url() );
         /**
          * Array
          */
@@ -143,6 +153,67 @@ class BreadcrumbsTest extends \Codeception\Test\Unit
         $this->assertTrue( is_object( $sut ) );
         $this->assertInstanceOf( '\ItalyStrap\Breadcrumbs\Container_Interface', $sut );
         $this->assertInstanceOf( '\ItalyStrap\Breadcrumbs\Container', $sut );
+    }
+
+    /**
+     * @test
+     * it should be front_page
+     */
+    public function it_should_be_front_page()
+    {
+        $this->go_to( home_url() );
+
+        /**
+         * Array
+         */
+        $sut = $this->make_instance( 'array' );
+
+        $this->assertEquals(
+            [
+                [
+                    'title' => 'Test',
+                    'url'  => $this->args['home_url']
+                ],
+            ],
+            $sut
+        );
+    }
+
+    /**
+     * @test
+     * it should be page
+     */
+    public function it_should_be_page()
+    {
+        $post_id = $this->factory()->post->create([ 'post_type' => 'page', 'post_title' => 'Page' ]);
+
+        // $this->go_to( '/?p=' . $post_id );
+        $this->go_to( get_permalink( $post_id ) );
+
+        /**
+         * Array
+         */
+        $sut = $this->make_instance( 'array' );
+
+        codecept_debug(get_permalink( $post_id ));
+        codecept_debug($post_id);
+        codecept_debug($sut);
+        codecept_debug(get_the_id());
+        codecept_debug(is_page( $post_id ));
+
+        // $this->assertEquals(
+        //     [
+        //         [
+        //             'title' => $this->site_title,
+        //             'url'   => $this->args['home_url']
+        //         ],
+        //         [
+        //             'title' => 'Page',
+        //             'url'   => false
+        //         ],
+        //     ],
+        //     $sut
+        // );
     }
 }
 
