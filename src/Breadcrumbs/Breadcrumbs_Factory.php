@@ -21,12 +21,12 @@ class Breadcrumbs_Factory {
 	/**
 	 * Makers
 	 *
-	 * @param  array  $args
 	 * @param  string $type
+	 * @param  array  $args
 	 *
 	 * @return ItalyStrap\Breadcrumbs\View
 	 */
-	public static function make( array $args = [], $type = 'html' ) {
+	public static function make( $type = 'html', array $args = [] ) {
 
 		static $container = null;
 

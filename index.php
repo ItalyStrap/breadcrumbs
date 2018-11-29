@@ -39,33 +39,30 @@ require( __DIR__ . '/vendor/autoload.php' );
  */
 function init() {
 
-    $type = 'html';
-    // $type = 'json';
-
     $args = [
         'bloginfo_name' => get_option( 'blogname' ),
         'home_url'      => get_home_url( null, '/' ),
     ];
 
-    $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, $type );
+    $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'html', $args );
 
     echo $breadcrumbs;
 
-    $json = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'json' );
+    $json = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'json', $args );
 
     /**
      * var_dump()
      */
     // d( $json );
 
-    $obj = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'object' );
+    $obj = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'object', $args );
 
     /**
      * var_dump()
      */
     // d( $obj );
 
-    $array = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'array' );
+    $array = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'array', $args );
 
     /**
      * var_dump()

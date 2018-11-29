@@ -45,6 +45,6 @@ class BreadcrumbsCest
         $I->amOnPage( "/?p={$page_id}" );
         $I->seeElement( '.breadcrumb' );
 
-        $activated = $I->cli('plugin activate config');
+        // $activated = $I->cli('plugin activate config');
     }
 }
