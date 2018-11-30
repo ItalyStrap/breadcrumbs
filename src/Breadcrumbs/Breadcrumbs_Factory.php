@@ -23,10 +23,11 @@ class Breadcrumbs_Factory {
 	 *
 	 * @param  string $type
 	 * @param  array  $args
+	 * @param  bool   $reload
 	 *
 	 * @return ItalyStrap\Breadcrumbs\View
 	 */
-	public static function make( $type = 'html', array $args = [] ) {
+	public static function make( $type = 'html', array $args = [], $reload = false ) {
 
 		static $container = null;
 
@@ -39,7 +40,7 @@ class Breadcrumbs_Factory {
 		 */
 		$config = new Config( $args, $config_default );
 
-		if ( is_null( $container ) ) {
+		if ( is_null( $container ) || $reload ) {
 
 			/**
 			 * Breadcrumbs items container

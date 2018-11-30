@@ -109,4 +109,11 @@ abstract class View implements View_Interface {
 
 		return apply_filters( $this->context, $this->output );
 	}
+
+	/**
+	 * Print the output
+	 */
+	public function print() {
+		echo $this;
+	}
 }

@@ -29,6 +29,65 @@ Domain Path: Domain Path
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
+if ( ! function_exists( 'debug' ) ) {
+    /**
+     * Print debug output on debug.log file
+     *
+     * @param mixed $log The input value.
+     */
+    function debug( $log ) {
+        if ( ! defined( 'WP_DEBUG' ) || ! WP_DEBUG ) {
+            return;
+        }
+
+        error_log( print_r( $log, true ) );
+
+        // if ( is_array( $log ) || is_object( $log ) ) {
+        //  error_log( print_r( $log, true ) );
+        // } else {
+        //  error_log( $log );
+        // }
+    }
+}
+
+if ( ! function_exists( 'd' ) ) {
+    function d( $value = '' ) {
+        add_action( 'plugins_loaded', function () use ( $value ) {
+            if ( ! function_exists( 'd' ) ) {
+
+                echo "<pre>";
+                print_r( $value );
+                echo "</pre>";
+
+                debug( $value );
+
+                return;
+            }
+            \d( $value );
+        });
+    
+    }
+}
+
+if ( ! function_exists( 'ddd' ) ) {
+    function ddd( $value = '' ) {
+        add_action( 'plugins_loaded', function () use ( $value ) {
+            if ( ! function_exists( 'd' ) ) {
+
+                echo "<pre>";
+                print_r( $value );
+                echo "</pre>";
+
+                debug( $value );
+
+                die();
+            }
+            \ddd( $value );
+        });
+    
+    }
+}
+
 require( __DIR__ . '/vendor/autoload.php' );
 
 /**
@@ -46,7 +105,7 @@ function init() {
 
     $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'html', $args );
 
-    echo $breadcrumbs;
+    $breadcrumbs->print();
 
     $json = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'json', $args );
 
@@ -67,7 +126,7 @@ function init() {
     /**
      * var_dump()
      */
-    d( $array );
+    // d( $array );
 }
 
 add_action( 'get_footer', 'init' );
