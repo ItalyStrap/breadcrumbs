@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "df8034f654a176cb13ec1e86600d32e4",
-    "content-hash": "4e5daf6ea9859fa4aa7fe6bf1dad0ee3",
+    "hash": "d8efa70ec1f6762d77880fbe2ff7b04a",
+    "content-hash": "169e0e4b667559b3e1eb1aa66324453b",
     "packages": [
         {
             "name": "italystrap/config",
@@ -243,22 +243,23 @@
         },
         {
             "name": "codeception/codeception",
-            "version": "2.4.5",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/Codeception.git",
-                "reference": "5fee32d5c82791548931cbc34806b4de6aa1abfc"
+                "reference": "e0a658c64e98811a6fd4f6aa7c3222e0609066a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/5fee32d5c82791548931cbc34806b4de6aa1abfc",
-                "reference": "5fee32d5c82791548931cbc34806b4de6aa1abfc",
+                "url": "https://api.github.com/repos/Codeception/Codeception/zipball/e0a658c64e98811a6fd4f6aa7c3222e0609066a9",
+                "reference": "e0a658c64e98811a6fd4f6aa7c3222e0609066a9",
                 "shasum": ""
             },
             "require": {
                 "behat/gherkin": "^4.4.0",
                 "codeception/phpunit-wrapper": "^6.0.9|^7.0.6",
                 "codeception/stub": "^2.0",
+                "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "facebook/webdriver": ">=1.1.3 <2.0",
@@ -306,7 +307,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Codeception\\": "src\\Codeception",
+                    "Codeception\\": "src/Codeception",
                     "Codeception\\Extension\\": "ext"
                 }
             },
@@ -330,25 +331,25 @@
                 "functional testing",
                 "unit testing"
             ],
-            "time": "2018-08-01 07:21:49"
+            "time": "2018-10-29 21:23:19"
         },
         {
             "name": "codeception/phpunit-wrapper",
-            "version": "7.1.4",
+            "version": "7.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/phpunit-wrapper.git",
-                "reference": "f18ed631f1eddbb603d72219f577d223b23a1f89"
+                "reference": "a5633c736e0e0022bc5065b27c63f2d1aa97b69f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/f18ed631f1eddbb603d72219f577d223b23a1f89",
-                "reference": "f18ed631f1eddbb603d72219f577d223b23a1f89",
+                "url": "https://api.github.com/repos/Codeception/phpunit-wrapper/zipball/a5633c736e0e0022bc5065b27c63f2d1aa97b69f",
+                "reference": "a5633c736e0e0022bc5065b27c63f2d1aa97b69f",
                 "shasum": ""
             },
             "require": {
                 "phpunit/php-code-coverage": "^6.0",
-                "phpunit/phpunit": "^7.1",
+                "phpunit/phpunit": "~7.1.0|~7.2.0|~7.3.0",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0"
             },
@@ -373,7 +374,7 @@
                 }
             ],
             "description": "PHPUnit classes used by Codeception",
-            "time": "2018-06-20 20:07:21"
+            "time": "2018-10-07 21:30:01"
         },
         {
             "name": "codeception/stub",
@@ -666,16 +667,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c"
+                "reference": "dc523135366eb68f22268d069ea7749486458562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/b8e9745fb9b06ea6664d8872c4505fb16df4611c",
-                "reference": "b8e9745fb9b06ea6664d8872c4505fb16df4611c",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/dc523135366eb68f22268d069ea7749486458562",
+                "reference": "dc523135366eb68f22268d069ea7749486458562",
                 "shasum": ""
             },
             "require": {
@@ -706,7 +707,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2018-08-31 19:07:57"
+            "time": "2018-11-29 10:59:02"
         },
         {
             "name": "dg/mysql-dump",
@@ -868,46 +869,6 @@
                 "instantiate"
             ],
             "time": "2017-07-22 11:58:36"
-        },
-        {
-            "name": "electrolinux/phpquery",
-            "version": "0.9.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/electrolinux/phpquery.git",
-                "reference": "6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/electrolinux/phpquery/zipball/6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a",
-                "reference": "6cb8afcfe8cd4ce45f2f8c27d561383037c27a3a",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "phpQuery/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobiasz Cudnik",
-                    "email": "tobiasz.cudnik@gmail.com",
-                    "homepage": "https://github.com/TobiaszCudnik",
-                    "role": "Developer"
-                },
-                {
-                    "name": "didier Belot",
-                    "role": "Packager"
-                }
-            ],
-            "description": "phpQuery is a server-side, chainable, CSS3 selector driven Document Object Model (DOM) API based on jQuery JavaScript Library",
-            "homepage": "http://code.google.com/p/phpquery/",
-            "time": "2013-03-21 12:39:33"
         },
         {
             "name": "facebook/webdriver",
@@ -1353,6 +1314,39 @@
             "time": "2018-11-15 13:49:08"
         },
         {
+            "name": "italystrap/debug",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ItalyStrap/debug.git",
+                "reference": "8f9e475ad72769687e3e51c976962106be638b5a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ItalyStrap/debug/zipball/8f9e475ad72769687e3e51c976962106be638b5a",
+                "reference": "8f9e475ad72769687e3e51c976962106be638b5a",
+                "shasum": ""
+            },
+            "type": "wordpress-plugin",
+            "autoload": {
+                "files": [
+                    "src/autoload.php"
+                ],
+                "psr-4": {
+                    "ItalyStrap\\Debug\\": "src/Debug/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "overclokk",
+                    "email": "info@overclokk.net"
+                }
+            ],
+            "description": "Classes and functions for handling debugging",
+            "time": "2018-11-30 14:35:02"
+        },
+        {
             "name": "justinrainbow/json-schema",
             "version": "5.2.7",
             "source": {
@@ -1419,86 +1413,39 @@
             "time": "2018-02-14 22:26:30"
         },
         {
-            "name": "lucatume/codeception-setup-local",
-            "version": "1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lucatume/codeception-setup-local.git",
-                "reference": "0020cb2d1756d7262782c5cfd966dd9a93188c79"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/codeception-setup-local/zipball/0020cb2d1756d7262782c5cfd966dd9a93188c79",
-                "reference": "0020cb2d1756d7262782c5cfd966dd9a93188c79",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "^2.1",
-                "lucatume/wp-browser-commons": "^1.0"
-            },
-            "require-dev": {
-                "codeception/codeception": "^2.1",
-                "mikey179/vfsstream": "^1.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "tad\\Codeception\\Command\\": "src/Command",
-                    "tad\\Codeception\\Command\\Helpers\\": "src/Helpers"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Luca Tumedei",
-                    "email": "luca@theaveragedev.com"
-                }
-            ],
-            "description": "Flexible local setup for Codeception",
-            "time": "2017-06-01 09:49:40"
-        },
-        {
             "name": "lucatume/wp-browser",
-            "version": "2.1.6",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/wp-browser.git",
-                "reference": "97450d4dcad7c5a26575fe1988b5db59263f94a7"
+                "reference": "b5da0c0eff915849faec11b23bbadc5052ed6925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/97450d4dcad7c5a26575fe1988b5db59263f94a7",
-                "reference": "97450d4dcad7c5a26575fe1988b5db59263f94a7",
+                "url": "https://api.github.com/repos/lucatume/wp-browser/zipball/b5da0c0eff915849faec11b23bbadc5052ed6925",
+                "reference": "b5da0c0eff915849faec11b23bbadc5052ed6925",
                 "shasum": ""
             },
             "require": {
                 "antecedent/patchwork": "^2.0",
-                "codeception/codeception": ">=2.3 <=2.4.5",
+                "codeception/codeception": "~2.5.0",
+                "ext-pdo": "*",
                 "gumlet/php-image-resize": "^1.6",
-                "lucatume/codeception-setup-local": "~1.0",
                 "lucatume/wp-browser-commons": "^1.2.5",
-                "lucatume/wp-snaphot-assertions": "~1.0",
-                "php": "^7.0",
+                "php": ">=5.6.0",
                 "symfony/process": ">=2.7 <5.0",
                 "vlucas/phpdotenv": "^2.4",
                 "wp-cli/wp-cli": "^1.1"
             },
             "require-dev": {
                 "mikey179/vfsstream": "^1.6",
-                "ofbeaton/console-tester": "^1.1",
-                "site5/phantoman": "^1.1"
+                "ofbeaton/console-tester": "^1.1"
             },
-            "bin": [
-                "wpcept"
-            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Codeception\\": "src\\Codeception",
-                    "tad\\": "src\\tad"
+                    "Codeception\\": "src/Codeception",
+                    "tad\\": "src/tad"
                 },
                 "files": [
                     "src/tad/WPBrowser/functions.php"
@@ -1522,7 +1469,7 @@
                 "codeception",
                 "wordpress"
             ],
-            "time": "2018-09-25 07:13:21"
+            "time": "2018-11-29 13:58:24"
         },
         {
             "name": "lucatume/wp-browser-commons",
@@ -1568,50 +1515,6 @@
             ],
             "description": "Common libraries of the WP-Browser package.",
             "time": "2018-08-14 06:48:23"
-        },
-        {
-            "name": "lucatume/wp-snaphot-assertions",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lucatume/wp-snapshot-assertions.git",
-                "reference": "b44c9716cf497f969f04dd0663bbe85917443512"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lucatume/wp-snapshot-assertions/zipball/b44c9716cf497f969f04dd0663bbe85917443512",
-                "reference": "b44c9716cf497f969f04dd0663bbe85917443512",
-                "shasum": ""
-            },
-            "require": {
-                "electrolinux/phpquery": "^0.9.6",
-                "php": ">=7.0",
-                "spatie/phpunit-snapshot-assertions": "^1.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "tad\\WP\\Snapshots\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "theAverageDev (Luca Tumedei)",
-                    "email": "luca@theaveragedev.com"
-                }
-            ],
-            "description": "A set of utilities to support snapshot testing of WordPress code.",
-            "homepage": "https://github.com/lucatume/wp-snaphot-assertions",
-            "keywords": [
-                "snapshot",
-                "testing",
-                "wordpress"
-            ],
-            "time": "2018-03-10 13:04:35"
         },
         {
             "name": "mikemclin/laravel-wp-password",
@@ -2441,16 +2344,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.4.4",
+            "version": "7.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd"
+                "reference": "7b331efabbb628c518c408fdfcaf571156775de2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
-                "reference": "b1be2c8530c4c29c3519a052c9fb6cee55053bbd",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7b331efabbb628c518c408fdfcaf571156775de2",
+                "reference": "7b331efabbb628c518c408fdfcaf571156775de2",
                 "shasum": ""
             },
             "require": {
@@ -2471,11 +2374,11 @@
                 "phpunit/php-timer": "^2.0",
                 "sebastian/comparator": "^3.0",
                 "sebastian/diff": "^3.0",
-                "sebastian/environment": "^3.1 || ^4.0",
+                "sebastian/environment": "^3.1",
                 "sebastian/exporter": "^3.1",
                 "sebastian/global-state": "^2.0",
                 "sebastian/object-enumerator": "^3.0.3",
-                "sebastian/resource-operations": "^2.0",
+                "sebastian/resource-operations": "^1.0",
                 "sebastian/version": "^2.0.1"
             },
             "conflict": {
@@ -2495,7 +2398,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.4-dev"
+                    "dev-master": "7.3-dev"
                 }
             },
             "autoload": {
@@ -2521,7 +2424,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-11-14 16:52:02"
+            "time": "2018-09-08 15:14:29"
         },
         {
             "name": "psr/container",
@@ -2978,28 +2881,28 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "4.0.1",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "febd209a219cea7b56ad799b30ebbea34b71eb8f"
+                "reference": "cd0871b3975fb7fc44d11314fd1ee20925fce4f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/febd209a219cea7b56ad799b30ebbea34b71eb8f",
-                "reference": "febd209a219cea7b56ad799b30ebbea34b71eb8f",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/cd0871b3975fb7fc44d11314fd1ee20925fce4f5",
+                "reference": "cd0871b3975fb7fc44d11314fd1ee20925fce4f5",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.4"
+                "phpunit/phpunit": "^6.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                    "dev-master": "3.1.x-dev"
                 }
             },
             "autoload": {
@@ -3024,7 +2927,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2018-11-25 09:31:21"
+            "time": "2017-07-01 08:51:00"
         },
         {
             "name": "sebastian/exporter",
@@ -3291,25 +3194,25 @@
         },
         {
             "name": "sebastian/resource-operations",
-            "version": "2.0.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/resource-operations.git",
-                "reference": "4d7a795d35b889bf80a0cc04e08d77cedfa917a9"
+                "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/4d7a795d35b889bf80a0cc04e08d77cedfa917a9",
-                "reference": "4d7a795d35b889bf80a0cc04e08d77cedfa917a9",
+                "url": "https://api.github.com/repos/sebastianbergmann/resource-operations/zipball/ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
+                "reference": "ce990bb21759f94aeafd30209e8cfcdfa8bc3f52",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1"
+                "php": ">=5.6.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -3329,7 +3232,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2018-10-04 04:07:39"
+            "time": "2015-07-28 20:34:47"
         },
         {
             "name": "sebastian/version",
@@ -3468,65 +3371,17 @@
             "time": "2015-10-13 18:44:15"
         },
         {
-            "name": "spatie/phpunit-snapshot-assertions",
-            "version": "1.3.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
-                "reference": "0fefcadd42284c4913d285342dbe8215a2097adf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/0fefcadd42284c4913d285342dbe8215a2097adf",
-                "reference": "0fefcadd42284c4913d285342dbe8215a2097adf",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0",
-                "phpunit/phpunit": "^6.0.5|^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\Snapshots\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Snapshot testing with PHPUnit",
-            "homepage": "https://github.com/spatie/phpunit-snapshot-assertions",
-            "keywords": [
-                "assert",
-                "phpunit",
-                "phpunit-snapshot-assertions",
-                "snapshot",
-                "spatie",
-                "testing"
-            ],
-            "time": "2018-10-18 17:30:38"
-        },
-        {
             "name": "symfony/browser-kit",
-            "version": "v4.1.8",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "1c4e2f368a09cd33bf4b6e4a4a32b361a16ef1db"
+                "reference": "db7e59fec9c82d45e745eb500e6ede2d96f4a6e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/1c4e2f368a09cd33bf4b6e4a4a32b361a16ef1db",
-                "reference": "1c4e2f368a09cd33bf4b6e4a4a32b361a16ef1db",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/db7e59fec9c82d45e745eb500e6ede2d96f4a6e9",
+                "reference": "db7e59fec9c82d45e745eb500e6ede2d96f4a6e9",
                 "shasum": ""
             },
             "require": {
@@ -3543,7 +3398,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -3570,7 +3425,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-26 10:26:29"
+            "time": "2018-11-26 11:49:31"
         },
         {
             "name": "symfony/config",
@@ -3707,16 +3562,16 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v4.1.8",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "9e4dc57949853315561f0cd5eb84d0707465502a"
+                "reference": "aa9fa526ba1b2ec087ffdfb32753803d999fcfcd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/9e4dc57949853315561f0cd5eb84d0707465502a",
-                "reference": "9e4dc57949853315561f0cd5eb84d0707465502a",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/aa9fa526ba1b2ec087ffdfb32753803d999fcfcd",
+                "reference": "aa9fa526ba1b2ec087ffdfb32753803d999fcfcd",
                 "shasum": ""
             },
             "require": {
@@ -3725,7 +3580,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -3756,7 +3611,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-11 19:51:29"
+            "time": "2018-11-11 19:52:12"
         },
         {
             "name": "symfony/debug",
@@ -3887,16 +3742,16 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.1.8",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "a9f533524dcc3970a2c06ee1ec0bba35d3f5910e"
+                "reference": "7438a32108fdd555295f443605d6de2cce473159"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/a9f533524dcc3970a2c06ee1ec0bba35d3f5910e",
-                "reference": "a9f533524dcc3970a2c06ee1ec0bba35d3f5910e",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/7438a32108fdd555295f443605d6de2cce473159",
+                "reference": "7438a32108fdd555295f443605d6de2cce473159",
                 "shasum": ""
             },
             "require": {
@@ -3913,7 +3768,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                    "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -3940,7 +3795,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2018-11-26 10:26:29"
+            "time": "2018-11-26 10:55:26"
         },
         {
             "name": "symfony/event-dispatcher",
