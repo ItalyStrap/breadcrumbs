@@ -23,6 +23,6 @@
     },
     "require-dev": {
         "lucatume/wp-browser": "~2.0",
-        "italystrap/debug": "~1.0"
+        "italystrap/debug": "~1.1"
     }
 }
