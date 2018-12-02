@@ -16,7 +16,7 @@ This package create an HTML or Json Breadcrumbs elements to display on your Word
 Add the package to your projects `composer.json` file. Visit [getcomposer.org](http://getcomposer.org/) more information.
 
 ```shell
-composer require illuminated/helper-functions
+composer require italystrap/breadcrumbs
 ```
 
 or
@@ -41,20 +41,29 @@ include_once 'path/to/ItalyStrap/Breadcrumbs.php';
 
 ### Basic usage
 
-Use `\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, $type )` to display the breadcrumbs in your template.
+Use `\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $type, $args )` to display the breadcrumbs in your template.
 
 ```php
 use ItalyStrap\Breadcrumbs;
 
-echo Breadcrumbs_Factory::make( $args, 'html' );
+echo Breadcrumbs_Factory::make( 'html', $args );
 
 // Or
 
-echo Breadcrumbs_Factory::make( $args, 'json' );
+echo Breadcrumbs_Factory::make( 'json', $args );
 
 ```
 
-The second parameter is the type of breadcrumbs you want to display, "HTML" or "Json".
+The first parameter is the type of breadcrumbs you want to display:
+
+*  **HTML**
+	*  Return the HTML output
+*  **Json**
+	*  Return the Json output
+*  **object**
+	*  Return the object output
+*  **array**
+	*  Return the array output
 
 ## Options
 
@@ -123,7 +132,7 @@ return [
 ];
 ```
 
-### Default output
+### Default HTML output
 
 ```html
 <nav aria-label="breadcrumb">
@@ -148,6 +157,8 @@ return [
 
 ### Example for HTML version
 
+YOu can copy this snippet in your file breadcrumbs.php and include it in your plugin/theme
+
 ```php
 /**
  * Get the Breadcrumbs
@@ -168,7 +179,7 @@ function get_breadcrumbs( array $args = array() ) {
 
 		return apply_filters(
 			'italystrap_get_the_breadcrumbs',
-			\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'html' ),
+			\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'html', $args ),
 			$args
 		);
 
@@ -203,6 +214,8 @@ function do_breadcrumbs( array $args = array() ) {
 add_action( 'do_breadcrumbs', __NAMESPACE__ . '\do_breadcrumbs' );
 ```
 
+Then with the function `do_action( 'do_breadcrumbs', [] )` you can display the breadcrumbs where you want in your theme.
+
 ### Example for Json version
 
 ```php
@@ -224,7 +237,7 @@ function get_breadcrumbs( array $args = array() ) {
 
 		return apply_filters(
 			'italystrap_get_the_breadcrumbs',
-			\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( $args, 'json' ),
+			\ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'json', $args ),
 			$args
 		);
 
