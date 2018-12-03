@@ -26,6 +26,14 @@ class Html extends View{
 		 */
 		$home_icon = $this->config->get( 'home_icon', false );
 
+		/**
+		 * Just in case to prevent error if you have old version of Config::
+		 * with the array_merge_recursive();
+		 */
+		if ( is_array( $home_icon ) ) {
+			$home_icon = $home_icon[ 1 ];
+		}
+
 		$label = '';
 		$title = '';
 

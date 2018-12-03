@@ -40,8 +40,8 @@ class Json extends View {
 				'@type'		=> 'ListItem',
 				'position'	=> $position + 1,
 				'item'		=> [
-					'@id'		=> $crumb['url'],
-					'name'		=> $crumb['title'],
+					'@id'		=> esc_url( $crumb['url'] ),
+					'name'		=> wp_strip_all_tags( $crumb['title'] ),
 				],
 			];
 
