@@ -46,7 +46,7 @@ function init() {
 
     $breadcrumbs = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'html', $args );
 
-    $breadcrumbs->print();
+    $breadcrumbs->output();
 
     $json = \ItalyStrap\Breadcrumbs\Breadcrumbs_Factory::make( 'json', $args );
 

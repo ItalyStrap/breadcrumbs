@@ -221,8 +221,16 @@ class Generator implements Generator_Interface {
 						 * ecc
 						 * https://developer.wordpress.org/reference/functions/get_the_terms/
 						 */
-						$get_the_terms = get_the_terms( get_the_ID(), $object_taxonomies[0] );
+						$get_the_terms = false;
 
+						/**
+						 * @TODO Test
+						 * Problema sorto con un custom post type dove il post non aveva
+						 * nessuna tassonomia associata e dava undefine index
+						 */
+						if ( isset( $object_taxonomies[0] ) ) {
+							$get_the_terms = get_the_terms( get_the_ID(), $object_taxonomies[0] );
+						}
 
 						if ( $get_the_terms && ! is_wp_error( $get_the_terms ) ) {
 

@@ -113,7 +113,7 @@ abstract class View implements View_Interface {
 	/**
 	 * Print the output
 	 */
-	public function print() {
+	public function output() {
 		echo $this;
 	}
 }
