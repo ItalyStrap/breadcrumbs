@@ -17,7 +17,7 @@ class Html extends View{
 	/**
 	 * Render
 	 */
-	protected function set_output() {
+	protected function maybe_render() {
 
 		/**
 		 * Back compat for icon on first lement
@@ -88,7 +88,7 @@ class Html extends View{
 				),
 				$label,
 				absint( $position + 1 ),
-				$this->count !== $position + 1 ? wp_strip_all_tags( $this->config->get( 'separator' ) ) : ''
+				$this->count !== $position + 1 ? wp_strip_all_tags( $this->config->get( 'separator', '' ) ) : ''
 			);
 		}
 

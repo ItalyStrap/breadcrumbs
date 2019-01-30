@@ -69,6 +69,7 @@ function init() {
      */
     // debug( $array );
     // d( $array );
+	return true;
 }
 
 add_action( 'get_footer', 'init' );

@@ -9,12 +9,12 @@
 
 namespace ItalyStrap\Breadcrumbs;
 
-use ItalyStrap\Config\Config_Interface;
 use ItalyStrap\Config\Config;
 use InvalidArgumentException;
 
 /**
- *
+ * Class Breadcrumbs_Factory
+ * @package ItalyStrap\Breadcrumbs
  */
 class Breadcrumbs_Factory {
 
@@ -79,7 +79,10 @@ class Breadcrumbs_Factory {
 				// break;
 			
 			default:
-				throw new InvalidArgumentException( 'Unknown $type format given' );
+				throw new InvalidArgumentException( sprintf(
+					'Unknown %s format given',
+					$type
+				) );
 				break;
 		}
 	}

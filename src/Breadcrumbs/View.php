@@ -80,18 +80,9 @@ abstract class View implements View_Interface {
 	}
 
 	/**
-	 * Magic method to use in case the class would be send to string.
-	 *
-	 * @return string
+	 * Abstract maybe_render()
 	 */
-	public function __toString() {
-		return $this->render();
-	}
-
-	/**
-	 * Abstract set_output()
-	 */
-	abstract protected function set_output();
+	abstract protected function maybe_render();
 
 	/**
 	 * Render the output
@@ -105,7 +96,7 @@ abstract class View implements View_Interface {
 			return;
 		}
 
-		$this->set_output();
+		$this->maybe_render();
 
 		return apply_filters( $this->context, $this->output );
 	}
@@ -114,6 +105,6 @@ abstract class View implements View_Interface {
 	 * Print the output
 	 */
 	public function output() {
-		echo $this;
+		echo $this->render();
 	}
 }

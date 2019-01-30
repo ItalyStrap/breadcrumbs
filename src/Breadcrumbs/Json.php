@@ -26,7 +26,7 @@ class Json extends View {
 	 *
 	 * The $schema schema is taken from WP_SEO by Yoast
 	 */
-	protected function set_output() {
+	protected function maybe_render() {
 
 		$this->schema = [
 			'@context'			=> 'https://schema.org',
