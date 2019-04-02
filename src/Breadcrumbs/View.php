@@ -69,14 +69,8 @@ abstract class View implements View_Interface {
 		$this->container = $container;
 		$this->config = $config;
 
-		/**
-		 * Get the list of items
-		 *
-		 * @var array
-		 */
-		$this->list = (array) $this->container->all();
-		$this->count = count( $this->list );
-		$this->context = get_class( $this ); // (new \ReflectionClass($this))->getShortName();
+		$this->count = $this->container->count();
+		$this->context = \get_class( $this ); // (new \ReflectionClass($this))->getShortName();
 	}
 
 	/**
@@ -93,12 +87,15 @@ abstract class View implements View_Interface {
 		 * Prevent the output in case there is any item in the list
 		 */
 		if ( 0 === $this->count ) {
-			return;
+			return '';
 		}
 
 		$this->maybe_render();
 
-		return apply_filters( $this->context, $this->output );
+		/**
+		 * Filter name: ItalyStrap\Breadcrumbs\Html|Json
+		 */
+		return \apply_filters( $this->context, $this->output );
 	}
 
 	/**
@@ -106,5 +103,12 @@ abstract class View implements View_Interface {
 	 */
 	public function output() {
 		echo $this->render();
+	}
+
+	/**
+	 * Render the output
+	 */
+	public function __toString() {
+		return $this->render();
 	}
 }

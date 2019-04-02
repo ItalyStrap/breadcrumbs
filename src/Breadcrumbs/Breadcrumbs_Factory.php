@@ -9,11 +9,12 @@
 
 namespace ItalyStrap\Breadcrumbs;
 
-use ItalyStrap\Config\Config;
-use InvalidArgumentException;
+use \ItalyStrap\Config\Config_Factory as Config;
+use \InvalidArgumentException;
 
 /**
  * Class Breadcrumbs_Factory
+ *
  * @package ItalyStrap\Breadcrumbs
  */
 class Breadcrumbs_Factory {
@@ -22,29 +23,30 @@ class Breadcrumbs_Factory {
 	 * Makers
 	 *
 	 * @param  string $type
-	 * @param  array  $args
-	 * @param  bool   $reload
+	 * @param  array $args
+	 * @param  bool $reload
 	 *
-	 * @return ItalyStrap\Breadcrumbs\View
+	 * @return \ItalyStrap\Breadcrumbs\View|object|array
+	 * @throws \Exception
 	 */
 	public static function make( $type = 'html', array $args = [], $reload = false ) {
 
 		static $container = null;
 
-		$config_default = require( 'config/breadcrumbs.php' );
+		$config_default = (array) require( 'config/breadcrumbs.php' );
 
 		/**
 		 * Breadcrumbs configuration
 		 *
 		 * @var Config
 		 */
-		$config = new Config( $args, $config_default );
+		$config = Config::make( $args, $config_default );
 
 		if ( is_null( $container ) || $reload ) {
 
 			/**
 			 * Breadcrumbs items container
-			 * First instantiate the container
+			 * First we need to instantiate the container
 			 *
 			 * @var Container
 			 */
@@ -53,12 +55,11 @@ class Breadcrumbs_Factory {
 			/**
 			 * Breadcrumbs generator
 			 * Pass the container to the generator
+			 * And Build the items list
 			 *
 			 * @var Generator
 			 */
-			$generator = new Generator( $config, $container );
-			// Build the items list
-			$generator->build();
+			( new Generator( $config, $container ) )->build();
 		}
 
 		/**

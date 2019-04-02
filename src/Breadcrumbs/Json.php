@@ -10,7 +10,7 @@
 namespace ItalyStrap\Breadcrumbs;
 
 /**
- *
+ * Json view for Breadcrumbs
  */
 class Json extends View {
 
@@ -34,20 +34,20 @@ class Json extends View {
 			'itemListElement'	=> [],
 		];
 
-		foreach ( $this->list as $position => $crumb ) {
+		foreach ( $this->container as $position => $crumb ) {
 
 			$this->schema['itemListElement'][] = [
 				'@type'		=> 'ListItem',
 				'position'	=> $position + 1,
 				'item'		=> [
-					'@id'		=> esc_url( $crumb['url'] ),
-					'name'		=> wp_strip_all_tags( $crumb['title'] ),
+					'@id'		=> \esc_url( $crumb['url'] ),
+					'name'		=> \wp_strip_all_tags( $crumb['title'] ),
 				],
 			];
 
 		}
 
-		$this->output = "<script type='application/ld+json'>" . wp_json_encode( $this->schema ) . '</script>' . "\n";
+		$this->output = "<script type='application/ld+json'>" . \wp_json_encode( $this->schema ) . '</script>' . "\n";
 	}
 }
 

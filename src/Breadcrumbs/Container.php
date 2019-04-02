@@ -9,12 +9,14 @@
 
 namespace ItalyStrap\Breadcrumbs;
 
-use ItalyStrap\Config\Config;
+use \ArrayObject;
 
 /**
  *
  */
-class Container extends Config implements Container_Interface {
+class Container extends ArrayObject implements Container_Interface {
+
+	protected $items = [];
 
 	/**
 	 * Retrieves all of the runtime configuration parameters
@@ -25,20 +27,24 @@ class Container extends Config implements Container_Interface {
 	 *
 	 * @return array
 	 */
-	public function all() {
-		return apply_filters( get_class( $this ) . '\Items', $this->items );
+	public function all() : array {
+		return apply_filters( get_class( $this ) . '\Items', $this->getArrayCopy() );
 	}
 
 	/**
 	 * Add
 	 *
 	 * @param  string $title The item title.
-	 * @param  string $url   The item url.
+	 * @param bool $url The item url.
+	 *
+	 * @return self
 	 */
-	public function push( $title, $url = false ) {
-		$this->items[] = [
+	public function push( $title, $url = false ) : self {
+		$this->append( [
 			'title'	=> $title,
 			'url'	=> $url,
-		];
+		] );
+
+		return $this;
 	}
 }

@@ -9,8 +9,8 @@
 
 namespace ItalyStrap\Breadcrumbs;
 
-use ItalyStrap\Config\Config_Interface;
-use Exception;
+use \InvalidArgumentException;
+use \ItalyStrap\Config\Config_Interface;
 
 /**
  * Generator
@@ -20,7 +20,7 @@ class Generator implements Generator_Interface {
 	/**
 	 * Config object
 	 *
-	 * @var Config
+	 * @var Config_Interface
 	 */
 	private $config = null;
 
@@ -33,6 +33,8 @@ class Generator implements Generator_Interface {
 
 	/**
 	 * Constructor
+	 *
+	 * @throws \InvalidArgumentException
 	 */
 	public function __construct( Config_Interface $config, Container_Interface $container ) {
 
@@ -40,11 +42,11 @@ class Generator implements Generator_Interface {
 		$this->container = $container;
 
 		if ( ! $this->config->has( 'bloginfo_name' ) ) {
-			throw new Exception( "'bloginfo_name' Not set", 1 );
+			throw new InvalidArgumentException( "'bloginfo_name' Not set", 1 );
 		}
 
 		if ( ! $this->config->has( 'home_url' ) ) {
-			throw new Exception( "'home_url' Not set", 1 );
+			throw new InvalidArgumentException( "'home_url' Not set", 1 );
 		}
 	}
 
@@ -53,7 +55,7 @@ class Generator implements Generator_Interface {
 	 */
 	public function build() {
 
-		if ( ! $this->config->get( 'show_on_front' ) && is_front_page() ) {
+		if ( ! $this->config->get( 'show_on_front' ) && \is_front_page() ) {
 			return;
 		}
 
@@ -64,19 +66,19 @@ class Generator implements Generator_Interface {
 		 * Get the first element of breadcrumbs
 		 * This is the static front page or the blog page if is a new installation
 		 */
-		if ( ( is_home() && is_front_page() ) || is_front_page() ) {
+		if ( ( \is_home() && \is_front_page() ) || \is_front_page() ) {
 
 			$this->container->push( $bloginfo_name, $home_url );
 
-		} else if ( is_home() && ! is_front_page() ) {
+		} else if ( \is_home() && ! \is_front_page() ) {
 		// The page with the list of article.
-			$page_for_posts = get_option( 'page_for_posts' );
+			$page_for_posts = \get_option( 'page_for_posts' );
 
 			/**
 			 * Displayed only on blog page if exists
 			 */
 			$this->container->push( $bloginfo_name, $home_url );
-			$this->container->push( get_the_title( $page_for_posts ), get_permalink( $page_for_posts ) );
+			$this->container->push( \get_the_title( $page_for_posts ), \get_permalink( $page_for_posts ) );
 
 		} else {
 
@@ -85,14 +87,14 @@ class Generator implements Generator_Interface {
 
 		switch ( true ) {
 
-			case is_attachment():
+			case \is_attachment():
 
 				/**
 				 * ID of attachemnt's parent
 				 *
 				 * @var int
 				 */
-				$parent_id = wp_get_post_parent_id( get_the_ID() );
+				$parent_id = \wp_get_post_parent_id( \get_the_ID() );
 
 				/**
 				 * If parent post id $parent_id exist return parent post item
@@ -104,25 +106,25 @@ class Generator implements Generator_Interface {
 					 *
 					 * @var Object
 					 */
-					$get_post = get_post( $parent_id );
+					$get_post = \get_post( $parent_id );
 
-					$this->container->push( $get_post->post_title, get_permalink( $parent_id ) );
+					$this->container->push( $get_post->post_title, \get_permalink( $parent_id ) );
 				}
 
-				$this->container->push( get_the_title() );
+				$this->container->push( \get_the_title() );
 
 				break;
 
-			case is_single() && ! is_attachment():
+			case \is_single() && ! \is_attachment():
 
-				$post_type = get_post_type();
+				$post_type = \get_post_type();
 
 				/**
 				 * Array with WP_Term in it
 				 *
 				 * @var array
 				 */
-				$category = get_the_category();
+				$category = \get_the_category();
 
 				/**
 				 * If article has category and has parents category too
@@ -144,7 +146,7 @@ class Generator implements Generator_Interface {
 
 				if ( 'post' === $post_type ) {
 
-					$this->container->push( get_the_title() );
+					$this->container->push( \get_the_title() );
 
 				} else {
 
@@ -159,7 +161,7 @@ class Generator implements Generator_Interface {
 					 *
 					 * @var Object
 					 */
-					$post_type = get_post_type_object( $post_type );
+					$post_type = \get_post_type_object( $post_type );
 
 					/**
 					 * Slug of post
@@ -178,7 +180,7 @@ class Generator implements Generator_Interface {
 					 *
 					 * @var array
 					 */
-					$anchestor = array_reverse( get_post_ancestors( get_the_ID() ) );
+					$anchestor = \array_reverse( \get_post_ancestors( \get_the_ID() ) );
 
 					/**
 					 * If there is a hierarchy of page then add post anchestor
@@ -192,9 +194,9 @@ class Generator implements Generator_Interface {
 							 *
 							 * @var int
 							 */
-							$post_anchestor_id = get_post( $anchestor_id );
+							$post_anchestor_id = \get_post( $anchestor_id );
 
-							$this->container->push( $post_anchestor_id->post_title, get_permalink( $post_anchestor_id ) );
+							$this->container->push( $post_anchestor_id->post_title, \get_permalink( $post_anchestor_id ) );
 						}
 
 					} else {
@@ -209,7 +211,7 @@ class Generator implements Generator_Interface {
 						 *
 						 * @var array
 						 */
-						$object_taxonomies = get_object_taxonomies( get_post() );
+						$object_taxonomies = \get_object_taxonomies( \get_post() );
 
 						/**
 						 * Ritorna tutte le tassonomie associate al post partendo
@@ -229,10 +231,10 @@ class Generator implements Generator_Interface {
 						 * nessuna tassonomia associata e dava undefine index
 						 */
 						if ( isset( $object_taxonomies[0] ) ) {
-							$get_the_terms = get_the_terms( get_the_ID(), $object_taxonomies[0] );
+							$get_the_terms = \get_the_terms( \get_the_ID(), $object_taxonomies[0] );
 						}
 
-						if ( $get_the_terms && ! is_wp_error( $get_the_terms ) ) {
+						if ( $get_the_terms && ! \is_wp_error( $get_the_terms ) ) {
 
 							$sorted_terms = [];
 							$this->sort_terms_hierarchically( $get_the_terms, $sorted_terms );
@@ -241,20 +243,20 @@ class Generator implements Generator_Interface {
 						}
 					}
 
-					$this->container->push( get_the_title() );
+					$this->container->push( \get_the_title() );
 
 				}
 
 				break;
 
-			case  is_page() && ! is_front_page() :
+			case  \is_page() && ! \is_front_page() :
 
 				/**
 				 * Get array of all anchestor ID
 				 *
 				 * @var array
 				 */
-				$anchestor = array_reverse( get_post_ancestors( get_the_ID() ) );
+				$anchestor = \array_reverse( \get_post_ancestors( \get_the_ID() ) );
 
 				foreach ( $anchestor as $anchestor_id ) {
 
@@ -263,21 +265,21 @@ class Generator implements Generator_Interface {
 					 *
 					 * @var int
 					 */
-					$post_anchestor_id = get_post( $anchestor_id );
+					$post_anchestor_id = \get_post( $anchestor_id );
 
-					$this->container->push( $post_anchestor_id->post_title, get_permalink( $post_anchestor_id ) );
+					$this->container->push( $post_anchestor_id->post_title, \get_permalink( $post_anchestor_id ) );
 				}
 
 				/**
 				 * If is page and not front page add page title
 				 */
-				$this->container->push( get_the_title() );
+				$this->container->push( \get_the_title() );
 
 				break;
 
-			case is_tax():
+			case \is_tax():
 
-				$queried_object = get_queried_object();
+				$queried_object = \get_queried_object();
 
 				if ( $queried_object instanceof \WP_Term ) {
 
@@ -294,7 +296,7 @@ class Generator implements Generator_Interface {
 
 				break;
 
-			case is_category():
+			case \is_category():
 
 				/**
 				 * If is category (default archive.php) add Category name
@@ -302,40 +304,40 @@ class Generator implements Generator_Interface {
 				 * Nota per me: togliere solo link su categoria nipote
 				 * e aggiungere &before_element_active
 				 */
-				$this->generate_tax_hierarchy( get_query_var( 'cat' ) );
+				$this->generate_tax_hierarchy( \get_query_var( 'cat' ) );
 
 				break;
 
-			case is_tag():
+			case \is_tag():
 
 				/**
 				 * If is tag (default archive.php) add tag title
 				 */
-				$this->container->push( __( 'Tag: ', 'italystrap' ) . single_tag_title( '', false ) );
+				$this->container->push( __( 'Tag: ', 'italystrap' ) . \single_tag_title( '', false ) );
 
 				break;
 
-			case is_post_type_archive():
+			case \is_post_type_archive():
 
 				/**
 				 * If is Custom Post Type's archive (default archive.php)
 				 * add Post Type Archive Title
 				 */
-				$this->container->push( post_type_archive_title( '', false ) );
+				$this->container->push( \post_type_archive_title( '', false ) );
 
 				break;
 
-			case is_year():
+			case \is_year():
 
 				/**
 				 * If is year (default archive.php) add year
 				 * @hook https://developer.wordpress.org/reference/hooks/get_the_time/
 				 */
-				$this->container->push( __( 'Yearly archive: ', 'italystrap' ) . get_the_time( 'Y' ) );
+				$this->container->push( __( 'Yearly archive: ', 'italystrap' ) . \get_the_time( 'Y' ) );
 
 				break;
 
-			case is_month():
+			case \is_month():
 
 				/**
 				 * If is month (default archive.php) add year with link and month name
@@ -345,15 +347,15 @@ class Generator implements Generator_Interface {
 				 *
 				 * @var int
 				 */
-				$year = get_the_time( 'Y' );
+				$year = \get_the_time( 'Y' );
 
-				$this->container->push( $year, get_year_link( $year ) );
+				$this->container->push( $year, \get_year_link( $year ) );
 
-				$this->container->push( __( 'Monthly archive: ', 'italystrap' ) . get_the_time( 'F' ) );
+				$this->container->push( __( 'Monthly archive: ', 'italystrap' ) . \get_the_time( 'F' ) );
 
 				break;
 
-			case is_day():
+			case \is_day():
 
 				/**
 				 * If is day (default archive.php) add year with link,
@@ -364,7 +366,7 @@ class Generator implements Generator_Interface {
 				 *
 				 * @var int
 				 */
-				$year = get_the_time( 'Y' );
+				$year = \get_the_time( 'Y' );
 
 				/**
 				 * Get the month time
@@ -372,34 +374,34 @@ class Generator implements Generator_Interface {
 				 *
 				 * @var int
 				 */
-				$month = get_the_time( 'm' );
+				$month = \get_the_time( 'm' );
 
-				$this->container->push( $year, get_year_link( $year ) );
-				$this->container->push( $month, get_month_link( $year, $month ) );
+				$this->container->push( $year, \get_year_link( $year ) );
+				$this->container->push( $month, \get_month_link( $year, $month ) );
 
-				$this->container->push( __( 'Daily archive: ', 'italystrap' ) . get_the_time( 'd' ) );
+				$this->container->push( __( 'Daily archive: ', 'italystrap' ) . \get_the_time( 'd' ) );
 
 				break;
 
-			case is_author():
+			case \is_author():
 
 				/**
 				 * If is author (default archive.php) add author name
 				 */
-				$this->container->push( __( 'Author Archives: ', 'italystrap' ) . get_the_author() );
+				$this->container->push( __( 'Author Archives: ', 'italystrap' ) . \get_the_author() );
 
 				break;
 
-			case is_search():
+			case \is_search():
 
 				/**
 				 * If is search (default search.php) add search query
 				 */
-				$this->container->push( __( 'Search Results for: ', 'italystrap' ) . get_search_query() );
+				$this->container->push( __( 'Search Results for: ', 'italystrap' ) . \get_search_query() );
 
 				break;
 
-			case is_404():
+			case \is_404():
 
 				/**
 				 * If is 404
@@ -416,11 +418,11 @@ class Generator implements Generator_Interface {
 		/**
 		 * If is paginated page add (Page n°) at the end of breadcrumb
 		 */
-		$paged = get_query_var( 'paged' );
+		$paged = \get_query_var( 'paged' );
 
 		if ( $paged ) {
 
-			$label = sprintf(
+			$label = \sprintf(
 				'%s %s',
 				__( 'Page', 'italystrap' ),
 				$paged
@@ -448,22 +450,22 @@ class Generator implements Generator_Interface {
 	 *                                        prevent duplicates
 	 * @param  string              $tax
 	 *
-	 * @return string|WP_Error A list of category parents on success, WP_Error on failure.
+	 * @return string|\WP_Error A list of category parents on success, WP_Error on failure.
 	 */
 	private function generate_tax_hierarchy( $id, $visited = [], $tax = 'category' ) {
 
 		/**
 		 * WP_term object
 		 *
-		 * @var WP_Term
+		 * @var \WP_Term
 		 */
-		$parent = get_term( $id, $tax );
+		$parent = \get_term( $id, $tax );
 
-		if ( is_wp_error( $parent ) ) {
+		if ( \is_wp_error( $parent ) ) {
 			return $parent;
 		}
 
-		if ( $parent->parent && ( $parent->parent !== $parent->term_id ) && ! in_array( $parent->parent, $visited, true ) ) {
+		if ( $parent->parent && ( $parent->parent !== $parent->term_id ) && ! \in_array( $parent->parent, $visited, true ) ) {
 
 			$visited[] = $parent->parent;
 
@@ -471,7 +473,7 @@ class Generator implements Generator_Interface {
 			$this->generate_tax_hierarchy( $parent->parent, $visited, $tax );
 		}
 
-		$this->container->push( $parent->name, get_category_link( $parent->term_id ) );
+		$this->container->push( $parent->name, \get_category_link( $parent->term_id ) );
 	}
 
 	/**
@@ -524,11 +526,11 @@ class Generator implements Generator_Interface {
 	private function sorted_term_html_output( array $terms = [], $object_taxonomies = null ) {
 
 		$terms = $this->get_terms_flat( $terms );
-		$terms = array_reverse( $terms );
+		$terms = \array_reverse( $terms );
 
 		foreach ( $terms as $term ) {
 
-			$term_link = get_term_link( $term, $object_taxonomies[0] );
+			$term_link = \get_term_link( $term, $object_taxonomies[0] );
 
 			$this->container->push( $term->name, $term_link );
 		}

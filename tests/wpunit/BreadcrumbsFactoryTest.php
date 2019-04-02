@@ -60,10 +60,10 @@ class BreadcrumbsFactoryTest extends \Codeception\TestCase\WPTestCase
 
     /**
      * @test
-     * it should throw_if_is_not_the_correct_type
+     * it should throw_an_exception_if_is_not_the_correct_type
      */
-    public function it_should_throw_if_is_not_the_correct_type() {
-        $this->setExpectedException( 'InvalidArgumentException' );
+    public function it_should_throw_an_exception_if_is_not_the_correct_type() {
+        $this->expectException( InvalidArgumentException::class );
 
         $this->make_instance( 'incorrect_type' );
     }
@@ -77,18 +77,14 @@ class BreadcrumbsFactoryTest extends \Codeception\TestCase\WPTestCase
         /**
          * HTML
          */
-        ob_start();
-        echo $this->make_instance();
-        $sut = ob_get_clean();
+        $sut = $this->make_instance()->render();
 
         $this->assertTrue( is_string( $sut ) );
 
         /**
          * Json
          */
-        ob_start();
-        echo $this->make_instance( 'json' );
-        $sut = ob_get_clean();
+        $sut = $this->make_instance( 'json' )->render();
 
         $this->assertTrue( is_string( $sut ) );
     }
@@ -99,20 +95,11 @@ class BreadcrumbsFactoryTest extends \Codeception\TestCase\WPTestCase
      */
     public function it_should_be_string_start_with()
     {
-        ob_start();
-        echo $this->make_instance();
-        $sut = ob_get_clean();
-
+        $sut = $this->make_instance()->render();
         $this->assertStringStartsWith( '<nav aria-label="breadcrumb">', $sut, 'message');
 
-        ob_start();
-        echo $this->make_instance( 'json' );
-        $sut = ob_get_clean();
-
+        $sut = $this->make_instance( 'json' )->render();
         $this->assertStringStartsWith( "<script type='application/ld+json'>", $sut, 'message');
-
-        //
-        // assertOutputRegex($pattern) // PHPUnit docs
     }
 
     /**
@@ -143,6 +130,6 @@ class BreadcrumbsFactoryTest extends \Codeception\TestCase\WPTestCase
 
         $this->assertTrue( is_object( $sut ) );
         $this->assertInstanceOf( '\ItalyStrap\Breadcrumbs\Container_Interface', $sut );
-        $this->assertInstanceOf( '\ItalyStrap\Breadcrumbs\Container', $sut );
+        $this->assertInstanceOf( \ItalyStrap\Breadcrumbs\Container::class, $sut );
     }
 }

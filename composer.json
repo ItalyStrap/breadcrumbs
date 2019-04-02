@@ -18,7 +18,7 @@
     "minimum-stability": "stable",
     "require": {
         "italystrap/helpers": "^1.0",
-        "italystrap/config": "^1.0"
+        "italystrap/config": "^2.0"
     },
     "require-dev": {
         "lucatume/wp-browser": "~2.2",
