@@ -9,7 +9,7 @@
 
 namespace ItalyStrap\Breadcrumbs;
 
-use ItalyStrap\Config\Config_Interface;
+use ItalyStrap\Config\ConfigInterface;
 
 /**
  *
@@ -26,7 +26,7 @@ abstract class View implements View_Interface {
 	/**
 	 * Configuration object
 	 *
-	 * @var Config_Interface
+	 * @var ConfigInterface
 	 */
 	protected $config;
 
@@ -61,10 +61,10 @@ abstract class View implements View_Interface {
 	/**
 	 * Constructor
 	 *
-	 * @param Config_Interface    $config
+	 * @param ConfigInterface    $config
 	 * @param Container_Interface $container
 	 */
-	public function __construct( Config_Interface $config, Container_Interface $container ) {
+	public function __construct( ConfigInterface $config, Container_Interface $container ) {
 
 		$this->container = $container;
 		$this->config = $config;

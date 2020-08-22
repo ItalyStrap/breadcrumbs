@@ -14,7 +14,7 @@ class BreadcrumbsTest extends \Codeception\TestCase\WPTestCase
     protected $site_title;
 
 
-    public function setUp()
+    public function setUp(): void
     {
         // before
         parent::setUp();
@@ -64,7 +64,7 @@ class BreadcrumbsTest extends \Codeception\TestCase\WPTestCase
         );
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         update_option( 'show_on_front', 'posts' );
         update_option( 'page_on_front', 0 );

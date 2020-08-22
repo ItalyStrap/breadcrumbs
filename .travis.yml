@@ -1,5 +1,4 @@
 # https://www.theaveragedev.com/installing-and-setting-up-wordpress-and-nginx-for-travis-ci-tests/
-sudo: required
 
 language: php
 
@@ -28,10 +27,10 @@ cache:
 addons:
   apt:
     packages:
-      # - libjpeg-dev
-      # - libpng12-dev
-      - php5-fpm
-      - php5-mysql
+      - libjpeg-dev
+      - libpng12-dev
+      - php7.0-fpm
+      - php7.0-mysql
       - nginx
   hosts:
     - wp.localhost
@@ -98,15 +97,19 @@ install:
 
 before_script:
   # restart Nnginx and PHP-FPM services
-  - sudo service php5-fpm restart
+  - sudo service php7.0-fpm restart
   - sudo service nginx restart
 
   # build Codeception modules
   - codecept build
 
 script:
- # - codecept run acceptance
-#  - codecept run functional
-#  - codecept run integration
-#  - codecept run unit
- - codecept run wpunit
+  - find ./src/ ./tests/ -type f -name '*.php' -print0 | xargs -0 -L 1 -P 4 -- php -l
+#  - vendor/bin/phpcs --ignore=./tests/_support/* ./src/ ./tests/
+#  - vendor/bin/phpstan analyze
+#  - vendor/bin/psalm
+#  - codecept run unit --coverage-text
+  - codecept run wpunit
+#  - vendor/bin/infection -j$(nproc)
+#  - vendor/bin/phpbench run --report=performance
+#  - vendor/bin/phpinsights

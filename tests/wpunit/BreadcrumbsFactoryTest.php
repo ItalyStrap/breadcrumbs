@@ -6,7 +6,7 @@ class BreadcrumbsFactoryTest extends \Codeception\TestCase\WPTestCase
     protected $site_title;
 
 
-    public function setUp()
+    public function setUp(): void
     {
         // before
         parent::setUp();
@@ -19,7 +19,7 @@ class BreadcrumbsFactoryTest extends \Codeception\TestCase\WPTestCase
         $this->site_title = 'Test';
     }
 
-    public function tearDown()
+    public function tearDown() : void
     {
         // your tear down methods here
 

@@ -10,7 +10,7 @@
 namespace ItalyStrap\Breadcrumbs;
 
 use \InvalidArgumentException;
-use \ItalyStrap\Config\Config_Interface;
+use \ItalyStrap\Config\ConfigInterface;
 
 /**
  * Generator
@@ -20,7 +20,7 @@ class Generator implements Generator_Interface {
 	/**
 	 * Config object
 	 *
-	 * @var Config_Interface
+	 * @var ConfigInterface
 	 */
 	private $config = null;
 
@@ -36,7 +36,7 @@ class Generator implements Generator_Interface {
 	 *
 	 * @throws \InvalidArgumentException
 	 */
-	public function __construct( Config_Interface $config, Container_Interface $container ) {
+	public function __construct( ConfigInterface $config, Container_Interface $container ) {
 
 		$this->config = $config;
 		$this->container = $container;
