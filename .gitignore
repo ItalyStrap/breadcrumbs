@@ -5,3 +5,4 @@ _local_url.md
 
 *.local
 codeception.yml
+*.lock
