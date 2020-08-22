@@ -1,27 +1,80 @@
 {
     "name": "italystrap/breadcrumbs",
     "description": "ItalyStrap Breadcrumbs Class",
+    "keywords": ["WordPress", "breadcrumbs"],
     "type": "library",
-    "keywords": ["WordPress", "ItalyStrap", "breadcrumbs"],
-    "license": "GPL-2.0-or-later",
+    "license": "MIT",
     "authors": [
         {
-            "name": "overclokk",
-            "email": "info@overclokk.net"
+            "name": "Enea Overclokk",
+            "email": "info@overclokk.net",
+            "homepage": "https://www.italystrap.com",
+            "role": "Developer"
         }
     ],
+    "minimum-stability": "stable",
+    "require": {
+        "php" : ">=7.2",
+        "italystrap/helpers": "^1.0",
+        "italystrap/config": "^2.0"
+    },
+    "require-dev": {
+        "lucatume/wp-browser": "^2.4",
+        "lucatume/function-mocker-le": "^1.0",
+        "codeception/c3": "2.*",
+        "codeception/module-asserts": "^1.0",
+        "codeception/module-phpbrowser": "^1.0",
+        "codeception/module-webdriver": "^1.0",
+        "codeception/module-db": "^1.0",
+        "codeception/module-filesystem": "^1.0",
+        "codeception/module-cli": "^1.0",
+        "codeception/util-universalframework": "^1.0",
+        "brianium/paratest": "^4.0.*",
+        "squizlabs/php_codesniffer": "*",
+        "phpcompatibility/php-compatibility": "*",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+        "phpstan/phpstan": "^0.12",
+        "szepeviktor/phpstan-wordpress": "^0.5",
+        "vimeo/psalm": "^3.9",
+        "phpbench/phpbench": "@dev",
+        "infection/infection": "^0.15.3",
+        "phpmetrics/phpmetrics": "^2.5",
+        "nunomaduro/phpinsights": "^1.14.0",
+        "italystrap/debug": "^2.0"
+    },
     "autoload": {
         "psr-4": {
             "ItalyStrap\\Breadcrumbs\\": "src/Breadcrumbs/"
         }
     },
-    "minimum-stability": "stable",
-    "require": {
-        "italystrap/helpers": "^1.0",
-        "italystrap/config": "^2.0"
+    "scripts": {
+        "test": [
+            "test"
+        ],
+        "cs": [
+            "vendor\\bin\\phpcbf -p --ignore=./tests/_support/* ./src/ ./tests/ && vendor\\bin\\phpcs -p --ignore=./tests/_support/* ./src/ ./tests/"
+        ],
+        "analyze": [
+            "vendor\\bin\\phpstan analyze --level=max && vendor\\bin\\psalm"
+        ],
+        "unit": [
+            "vendor\\bin\\codecept run unit && vendor\\bin\\codecept run wpunit && vendor\\bin\\infection --threads=4"
+        ],
+        "bench": [
+            "vendor\\bin\\phpbench run --report=performance"
+        ],
+        "metrics": [
+            "vendor\\bin\\phpmetrics --report-html='./tests/_output/report' ./src"
+        ],
+        "insights": [
+            "vendor\\bin\\phpinsights"
+        ],
+        "clean": [
+            "vendor\\bin\\codecept clean"
+        ]
     },
-    "require-dev": {
-        "lucatume/wp-browser": "~2.2",
-        "italystrap/debug": "~1.1"
+    "support"    : {
+        "issues": "https://github.com/ItalyStrap/breacrumbs/issues",
+        "source": "https://github.com/ItalyStrap/breacrumbs"
     }
 }
