@@ -40,7 +40,7 @@ class Breadcrumbs_Factory {
 		 *
 		 * @var \ItalyStrap\Config\ConfigInterface
 		 */
-		$config = ( new ConfigFactory() )->make( $args, $config_default );
+		$config = ( new ConfigFactory() )->make( $config_default )->merge( $args );
 
 		if ( is_null( $container ) || $reload ) {
 
