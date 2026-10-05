@@ -9,7 +9,7 @@
 
 namespace ItalyStrap\Breadcrumbs;
 
-use \ItalyStrap\Config\Config_Factory as Config;
+use \ItalyStrap\Config\ConfigFactory;
 use \InvalidArgumentException;
 
 /**
@@ -38,9 +38,9 @@ class Breadcrumbs_Factory {
 		/**
 		 * Breadcrumbs configuration
 		 *
-		 * @var Config
+		 * @var \ItalyStrap\Config\ConfigInterface
 		 */
-		$config = Config::make( $args, $config_default );
+		$config = ( new ConfigFactory() )->make( $args, $config_default );
 
 		if ( is_null( $container ) || $reload ) {
 

@@ -16,7 +16,7 @@
     "require": {
         "php" : ">=7.2",
         "italystrap/helpers": "^1.0",
-        "italystrap/config": "^2.0"
+        "italystrap/config": "^2.6"
     },
     "require-dev": {
         "lucatume/wp-browser": "^2.4",
